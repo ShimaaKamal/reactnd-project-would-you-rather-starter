@@ -5,13 +5,14 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home";
 import Login from "./Login";
+import QuestionDetails from "./QuestionDetails";
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitData());
   }
   render() {
-    return (
+    /* return (
       <Router>
         <div className="container d-flex flex-column container">
           {this.props.loggedInUser === null ? (
@@ -24,6 +25,11 @@ class App extends Component {
           )}
         </div>
       </Router>
+    );*/
+    return (
+      <div>
+        <QuestionDetails />
+      </div>
     );
   }
 }
