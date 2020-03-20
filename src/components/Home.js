@@ -6,10 +6,6 @@ import "./Home.css";
 
 class Home extends Component {
   render() {
-    console.log(
-      "this.props.answeredQuestionsIds",
-      this.props.answeredQuestionsIds
-    );
     const { answeredQuestionsIds, unansweredQuestionsIds } = this.props;
     return (
       <div className="home-container align-self-center">

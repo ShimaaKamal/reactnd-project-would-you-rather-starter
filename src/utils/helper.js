@@ -4,10 +4,12 @@ export function formatDate(timestamp) {
   return time.substr(0, 5) + time.slice(-2) + " | " + d.toLocaleDateString();
 }
 
-export function formatQuestion(question, users) {
+export function formatQuestion(question, users, id) {
   return {
     questionOptionOneText: question.optionOne.text,
+    questionOptionTwoText: question.optionTwo.text,
     authorName: users[question.author].name,
-    authorAvatar: users[question.author].avatarURL
+    authorAvatar: users[question.author].avatarURL,
+    id: id
   };
 }

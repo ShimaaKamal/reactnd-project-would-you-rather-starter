@@ -2,9 +2,14 @@ import React, { Component } from "react";
 import { Card, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helper";
+import { withRouter } from "react-router-dom";
 import "./Question.css";
 
 class Question extends Component {
+  handlePollQuestion = (e, id) => {
+    this.props.history.push(`/question/${id}`);
+  };
+
   render() {
     const question = this.props.question;
     if (question == null) {
@@ -13,7 +18,8 @@ class Question extends Component {
     const {
       questionOptionOneText,
       authorName,
-      authorAvatar
+      authorAvatar,
+      id
     } = this.props.question;
     return (
       <div className="question-container">
@@ -32,7 +38,9 @@ class Question extends Component {
               <div className="question-info">
                 <h3>Would you Rather?</h3>
                 <span>...{questionOptionOneText}...</span>
-                <Button>View Poll</Button>
+                <Button onClick={e => this.handlePollQuestion(e, id)}>
+                  View Poll
+                </Button>
               </div>
             </div>
           </Card.Body>
@@ -44,7 +52,7 @@ class Question extends Component {
 function mapStateToProps({ questions, users }, { id }) {
   const question = questions[id];
   return {
-    question: question ? formatQuestion(question, users) : null
+    question: question ? formatQuestion(question, users, id) : null
   };
 }
-export default connect(mapStateToProps)(Question);
+export default withRouter(connect(mapStateToProps)(Question));

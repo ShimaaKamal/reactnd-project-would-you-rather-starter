@@ -11,7 +11,6 @@ class Login extends Component {
 
   handleChange = e => {
     const value = e.target.value;
-    console.log("value", value);
     this.setState(() => ({
       id: value
     }));
@@ -35,7 +34,7 @@ class Login extends Component {
         <Card.Body>
           <Card.Title>Sign in</Card.Title>
           <Form onSubmit={this.handleSubmit}>
-            <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Group controlId="formLogin">
               <Form.Control
                 as="select"
                 value={this.state.id}
