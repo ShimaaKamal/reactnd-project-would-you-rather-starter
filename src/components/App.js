@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home";
 import Login from "./Login";
-import QuestionAnswering from "./QuestionAnswering";
+import QuestionPoll from "./QuestionPoll";
 
 class App extends Component {
   componentDidMount() {
@@ -21,7 +21,7 @@ class App extends Component {
             <Fragment>
               <Header />
               <Route path="/home" component={Home} />
-              <Route path="/question/:id" component={QuestionAnswering} />
+              <Route path="/question/:id" component={QuestionPoll} />
             </Fragment>
           )}
         </div>

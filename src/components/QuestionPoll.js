@@ -2,24 +2,36 @@ import React, { Component } from "react";
 import { Card, Button, Form, Col, Row } from "react-bootstrap";
 import { formatQuestion } from "../utils/helper";
 import { connect } from "react-redux";
+import { handleSaveQuestionAnswer } from "../actions/shared";
 
-class QuestionAnswering extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedText: props.question.questionOptionOneText
-    };
-  }
+class QuestionPoll extends Component {
+  state = {
+    selectedOption: "optionOne"
+  };
 
   handleOptionChange = e => {
     console.log("e.target.value", e.target.value);
 
     this.setState({
-      selectedText: e.target.value
+      selectedOption: e.target.value
     });
   };
 
-  handleSubmit = () => {};
+  handleSubmit = e => {
+    console.log("insideHandleSubmit");
+    e.preventDefault();
+
+    const { selectedOption } = this.state;
+    const { dispatch, id, loggedInUser } = this.props;
+
+    dispatch(
+      handleSaveQuestionAnswer({
+        authedUser: loggedInUser,
+        qid: id,
+        answer: selectedOption
+      })
+    );
+  };
 
   render() {
     const {
@@ -52,29 +64,25 @@ class QuestionAnswering extends Component {
                         <Form.Check
                           type="radio"
                           label={questionOptionOneText}
-                          value={questionOptionOneText}
+                          value="optionOne"
                           name="questionOptionText"
                           id={questionOptionOneText}
-                          checked={
-                            this.state.selectedText === questionOptionOneText
-                          }
+                          checked={this.state.selectedOption === "optionOne"}
                           onChange={e => this.handleOptionChange(e)}
                         />
                         <Form.Check
                           type="radio"
                           label={questionOptionTwoText}
-                          value={questionOptionTwoText}
+                          value="optionTwo"
                           name="questionOptionText"
                           id={questionOptionTwoText}
-                          checked={
-                            this.state.selectedText === questionOptionTwoText
-                          }
+                          checked={this.state.selectedOption === "optionTwo"}
                           onChange={e => this.handleOptionChange(e)}
                         />
                       </Col>
                     </Form.Group>
                   </fieldset>
-                  <Button>Submit</Button>
+                  <Button type="submit">Submit</Button>
                 </Form>
               </div>
             </div>
@@ -84,11 +92,13 @@ class QuestionAnswering extends Component {
     );
   }
 }
-function mapStateToProps({ questions, users }, props) {
+function mapStateToProps({ questions, users, loggedInUser }, props) {
   const { id } = props.match.params;
   const question = questions[id];
   return {
-    question: question ? formatQuestion(question, users) : null
+    question: question ? formatQuestion(question, users) : null,
+    loggedInUser: loggedInUser,
+    id: id
   };
 }
-export default connect(mapStateToProps)(QuestionAnswering);
+export default connect(mapStateToProps)(QuestionPoll);

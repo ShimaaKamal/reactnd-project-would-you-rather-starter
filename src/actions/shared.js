@@ -1,5 +1,5 @@
-import { getInitialData } from "../utils/api";
-import { recieveQuestions } from "./questions";
+import { getInitialData, saveQuestionAnswer } from "../utils/api";
+import { recieveQuestions, addAnswerToQuestion } from "./questions";
 import { recieveUsers } from "./users";
 
 export function handleInitData() {
@@ -8,5 +8,14 @@ export function handleInitData() {
       dispatch(recieveQuestions(questions));
       dispatch(recieveUsers(users));
     });
+  };
+}
+
+export function handleSaveQuestionAnswer(info) {
+  console.log(info);
+  return dispatch => {
+    return saveQuestionAnswer(info).then(() =>
+      dispatch(addAnswerToQuestion(info))
+    );
   };
 }
