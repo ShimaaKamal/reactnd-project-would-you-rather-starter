@@ -6,6 +6,7 @@ import Header from "./Header";
 import Home from "./Home";
 import Login from "./Login";
 import QuestionPoll from "./QuestionPoll";
+import NewQuestion from "./NewQuestion";
 
 class App extends Component {
   componentDidMount() {
@@ -16,12 +17,13 @@ class App extends Component {
       <Router>
         <div className="container d-flex flex-column container">
           {this.props.loggedInUser === null ? (
-            <Route path="/" component={Login} />
+            <Route render={() => <Login />} />
           ) : (
             <Fragment>
               <Header />
-              <Route path="/home" component={Home} />
+              <Route path="/" exact component={Home} />
               <Route path="/question/:id" component={QuestionPoll} />
+              <Route path="/add" component={NewQuestion} />
             </Fragment>
           )}
         </div>

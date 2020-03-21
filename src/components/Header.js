@@ -10,10 +10,10 @@ class Header extends Component {
         <Navbar bg="light" variant="light">
           <Navbar.Brand href="#home">Would you rather?</Navbar.Brand>
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/home">
+            <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="">
+            <Nav.Link as={Link} to="/add">
               New Question
             </Nav.Link>
             <Nav.Link as={Link} to="">

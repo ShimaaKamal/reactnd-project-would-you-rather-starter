@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import { setLoggedINUser } from "../actions/loggedUser";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 
 class Login extends Component {
   state = {
@@ -21,8 +20,6 @@ class Login extends Component {
 
     const { id } = this.state;
     this.props.dispatch(setLoggedINUser(id));
-
-    this.props.history.push("/home");
   };
   render() {
     return (
@@ -50,7 +47,7 @@ class Login extends Component {
                 ))}
               </Form.Control>
             </Form.Group>
-            <Button type="submit" variant="success">
+            <Button className="login-submit" type="submit" variant="success">
               Login
             </Button>
           </Form>
@@ -67,4 +64,4 @@ function mapStateToProps({ users }) {
     })
   };
 }
-export default withRouter(connect(mapStateToProps)(Login));
+export default connect(mapStateToProps)(Login);

@@ -45,7 +45,7 @@ class QuestionResult extends Component {
         <span>Would you rather?</span>
         <div
           className={
-            questionOneNumberOfVotes > questionTwoAnswersPercentage
+            questionOneNumberOfVotes > questionTwoNumberOfVotes
               ? "highest-option"
               : "option"
           }
@@ -69,7 +69,7 @@ class QuestionResult extends Component {
         </div>
         <div
           className={
-            questionOneNumberOfVotes > questionTwoAnswersPercentage
+            questionOneNumberOfVotes > questionTwoNumberOfVotes
               ? "option"
               : "highest-option"
           }
