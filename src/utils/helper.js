@@ -4,12 +4,19 @@ export function formatDate(timestamp) {
   return time.substr(0, 5) + time.slice(-2) + " | " + d.toLocaleDateString();
 }
 
-export function formatQuestion(question, users, id) {
+export function formatQuestion(question, users, qid, loggedInUser) {
   return {
     questionOptionOneText: question.optionOne.text,
     questionOptionTwoText: question.optionTwo.text,
+    questionOneNumberOfVotes: question.optionOne.votes.length,
+    questionTwoNumberOfVotes: question.optionTwo.votes.length,
+    userAnswer: question.optionOne.votes.includes(loggedInUser)
+      ? question.optionOne.text
+      : question.optionTwo.votes.includes(loggedInUser)
+      ? question.optionTwo.text
+      : null,
     authorName: users[question.author].name,
     authorAvatar: users[question.author].avatarURL,
-    id: id
+    id: qid
   };
 }

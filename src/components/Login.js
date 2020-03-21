@@ -26,7 +26,7 @@ class Login extends Component {
   };
   render() {
     return (
-      <Card>
+      <Card className="align-self-center">
         <Card.Header>
           <h4> Welcome to the Would You Rather App!</h4>
           <h5> Please Sing in to continue</h5>
@@ -50,7 +50,9 @@ class Login extends Component {
                 ))}
               </Form.Control>
             </Form.Group>
-            <Button type="submit">Login</Button>
+            <Button type="submit" variant="success">
+              Login
+            </Button>
           </Form>
         </Card.Body>
       </Card>

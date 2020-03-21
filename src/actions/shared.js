@@ -12,7 +12,6 @@ export function handleInitData() {
 }
 
 export function handleSaveQuestionAnswer(info) {
-  console.log(info);
   return dispatch => {
     return saveQuestionAnswer(info).then(() =>
       dispatch(addAnswerToQuestion(info))

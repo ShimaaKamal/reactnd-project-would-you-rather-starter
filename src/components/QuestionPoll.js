@@ -1,45 +1,27 @@
 import React, { Component } from "react";
-import { Card, Button, Form, Col, Row } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { formatQuestion } from "../utils/helper";
 import { connect } from "react-redux";
 import { handleSaveQuestionAnswer } from "../actions/shared";
+import QuestionPollForm from "./QuestionPollForm";
+import QuestionResult from "./QuestionResult";
 
 class QuestionPoll extends Component {
-  state = {
-    selectedOption: "optionOne"
-  };
-
-  handleOptionChange = e => {
-    console.log("e.target.value", e.target.value);
-
-    this.setState({
-      selectedOption: e.target.value
-    });
-  };
-
-  handleSubmit = e => {
-    console.log("insideHandleSubmit");
-    e.preventDefault();
-
-    const { selectedOption } = this.state;
-    const { dispatch, id, loggedInUser } = this.props;
+  handleSubmit = optionSelected => {
+    const { dispatch, qid, loggedInUser } = this.props;
 
     dispatch(
       handleSaveQuestionAnswer({
         authedUser: loggedInUser,
-        qid: id,
-        answer: selectedOption
+        qid: qid,
+        answer: optionSelected
       })
     );
   };
 
   render() {
-    const {
-      questionOptionOneText,
-      questionOptionTwoText,
-      authorName,
-      authorAvatar
-    } = this.props.question;
+    const { question, isVoted } = this.props;
+    const { authorName, authorAvatar } = this.props.question;
 
     return (
       <div className="question-container align-self-center">
@@ -54,37 +36,13 @@ class QuestionPoll extends Component {
                   className="author-avatar"
                 />
               </div>
-
-              <div className="question-info">
-                <h3>Would you Rather?</h3>
-                <Form onSubmit={this.handleSubmit}>
-                  <fieldset>
-                    <Form.Group as={Row}>
-                      <Col sm={10}>
-                        <Form.Check
-                          type="radio"
-                          label={questionOptionOneText}
-                          value="optionOne"
-                          name="questionOptionText"
-                          id={questionOptionOneText}
-                          checked={this.state.selectedOption === "optionOne"}
-                          onChange={e => this.handleOptionChange(e)}
-                        />
-                        <Form.Check
-                          type="radio"
-                          label={questionOptionTwoText}
-                          value="optionTwo"
-                          name="questionOptionText"
-                          id={questionOptionTwoText}
-                          checked={this.state.selectedOption === "optionTwo"}
-                          onChange={e => this.handleOptionChange(e)}
-                        />
-                      </Col>
-                    </Form.Group>
-                  </fieldset>
-                  <Button type="submit">Submit</Button>
-                </Form>
-              </div>
+              {!isVoted && (
+                <QuestionPollForm
+                  question={question}
+                  handleSaveQuestionAnswer={this.handleSubmit}
+                />
+              )}
+              {isVoted && <QuestionResult question={question} />}
             </div>
           </Card.Body>
         </Card>
@@ -96,9 +54,14 @@ function mapStateToProps({ questions, users, loggedInUser }, props) {
   const { id } = props.match.params;
   const question = questions[id];
   return {
-    question: question ? formatQuestion(question, users) : null,
+    question: question
+      ? formatQuestion(question, users, id, loggedInUser)
+      : null,
     loggedInUser: loggedInUser,
-    id: id
+    qid: id,
+    isVoted:
+      questions[id].optionOne.votes.includes(loggedInUser) ||
+      questions[id].optionTwo.votes.includes(loggedInUser)
   };
 }
 export default connect(mapStateToProps)(QuestionPoll);

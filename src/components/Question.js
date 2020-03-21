@@ -38,7 +38,10 @@ class Question extends Component {
               <div className="question-info">
                 <h3>Would you Rather?</h3>
                 <span>...{questionOptionOneText}...</span>
-                <Button onClick={e => this.handlePollQuestion(e, id)}>
+                <Button
+                  onClick={e => this.handlePollQuestion(e, id)}
+                  variant="success"
+                >
                   View Poll
                 </Button>
               </div>

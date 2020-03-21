@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import logo from "../logo.svg";
 
 class Header extends Component {
@@ -9,9 +10,15 @@ class Header extends Component {
         <Navbar bg="light" variant="light">
           <Navbar.Brand href="#home">Would you rather?</Navbar.Brand>
           <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">New Question</Nav.Link>
-            <Nav.Link href="#pricing">Leader Board</Nav.Link>
+            <Nav.Link as={Link} to="/home">
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} to="">
+              New Question
+            </Nav.Link>
+            <Nav.Link as={Link} to="">
+              Leader Board
+            </Nav.Link>
           </Nav>
           <div>
             <img src={logo} className="user-logo" alt="logo" />

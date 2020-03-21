@@ -1,0 +1,36 @@
+.highest-option {
+  background-color: honeydew;
+  border-top: 2px solid #21ba45 !important;
+  font-size: 1rem;
+  position: relative;
+  margin: 1rem 0;
+  padding: 1em 1em;
+  border-radius: 0.28571429rem;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  font-weight: bold;
+}
+
+.check-user-option {
+  background-color: #f2711c !important;
+  color: #fff !important;
+  font-weight: 700;
+  padding: 7px;
+  margin-bottom: 8px;
+  border-radius: 0.28571429rem 0 0 0.28571429rem;
+  width: 144px;
+  padding-left: 1.2em;
+  line-height: 1;
+  margin-left: 129px;
+}
+
+.option {
+  background-color: rgb(244, 244, 244);
+  border-top: 2px solid #767676 !important;
+  font-size: 1rem;
+  position: relative;
+  margin: 1rem 0;
+  padding: 1em 1em;
+  border-radius: 0.28571429rem;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  font-weight: bold;
+}
