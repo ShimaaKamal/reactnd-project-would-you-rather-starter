@@ -25,10 +25,6 @@ code {
   flex-direction: column;
 }
 
-.question-container {
+.card-container {
   width: 482px;
-}
-
-.login-submit {
-  width: 435px;
 }

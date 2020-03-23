@@ -22,7 +22,7 @@ class Question extends Component {
       id
     } = this.props.question;
     return (
-      <div className="question-container">
+      <div className="card-container">
         <Card>
           <Card.Header as="h5">{authorName}</Card.Header>
           <Card.Body>

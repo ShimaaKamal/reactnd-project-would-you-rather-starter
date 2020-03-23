@@ -47,7 +47,7 @@ class Login extends Component {
                 ))}
               </Form.Control>
             </Form.Group>
-            <Button className="login-submit" type="submit" variant="success">
+            <Button block type="submit" variant="success">
               Login
             </Button>
           </Form>

@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Card } from "react-bootstrap";
 import { formatQuestion } from "../utils/helper";
 import { connect } from "react-redux";
 import { handleSaveQuestionAnswer } from "../actions/shared";
 import QuestionPollForm from "./QuestionPollForm";
 import QuestionResult from "./QuestionResult";
+import LoadingBar from "react-redux-loading-bar";
 
 class QuestionPoll extends Component {
   handleSubmit = optionSelected => {
@@ -24,29 +25,32 @@ class QuestionPoll extends Component {
     const { authorName, authorAvatar } = this.props.question;
 
     return (
-      <div className="question-container align-self-center">
-        <Card>
-          <Card.Header as="h5">{authorName} asks</Card.Header>
-          <Card.Body>
-            <div className="question">
-              <div className="author-avatar-container">
-                <img
-                  src={authorAvatar}
-                  alt={`Avatar of ${authorName}`}
-                  className="author-avatar"
-                />
+      <Fragment>
+        <LoadingBar />
+        <div className="card-container align-self-center">
+          <Card>
+            <Card.Header as="h5">{authorName} asks</Card.Header>
+            <Card.Body>
+              <div className="question">
+                <div className="author-avatar-container">
+                  <img
+                    src={authorAvatar}
+                    alt={`Avatar of ${authorName}`}
+                    className="author-avatar"
+                  />
+                </div>
+                {!isVoted && (
+                  <QuestionPollForm
+                    question={question}
+                    handleSaveQuestionAnswer={this.handleSubmit}
+                  />
+                )}
+                {isVoted && <QuestionResult question={question} />}
               </div>
-              {!isVoted && (
-                <QuestionPollForm
-                  question={question}
-                  handleSaveQuestionAnswer={this.handleSubmit}
-                />
-              )}
-              {isVoted && <QuestionResult question={question} />}
-            </div>
-          </Card.Body>
-        </Card>
-      </div>
+            </Card.Body>
+          </Card>
+        </div>
+      </Fragment>
     );
   }
 }

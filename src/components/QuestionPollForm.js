@@ -54,7 +54,7 @@ class QuestionPollForm extends Component {
               </Col>
             </Form.Group>
           </fieldset>
-          <Button type="submit" variant="success">
+          <Button type="submit" variant="success" block>
             Submit
           </Button>
         </Form>
