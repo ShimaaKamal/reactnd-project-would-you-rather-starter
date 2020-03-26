@@ -1,6 +1,6 @@
 import { getInitialData, saveQuestionAnswer } from "../utils/api";
 import { recieveQuestions, addAnswerToQuestion } from "./questions";
-import { recieveUsers } from "./users";
+import { recieveUsers, addAnswerToUser } from "./users";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 export function handleInitData() {
@@ -17,6 +17,7 @@ export function handleSaveQuestionAnswer(info) {
     dispatch(showLoading());
     return saveQuestionAnswer(info)
       .then(() => dispatch(addAnswerToQuestion(info)))
+      .then(() => dispatch(addAnswerToUser(info)))
       .then(() => dispatch(hideLoading()));
   };
 }

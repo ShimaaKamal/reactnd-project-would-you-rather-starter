@@ -3,7 +3,6 @@ import { Card, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helper";
 import { withRouter } from "react-router-dom";
-import "./Question.css";
 
 class Question extends Component {
   handlePollQuestion = (e, id) => {

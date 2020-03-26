@@ -12,8 +12,27 @@ code {
     monospace;
 }
 
+.header {
+  margin-bottom: 20px;
+}
+
 .user-logo {
   height: 30px;
+}
+
+.card-container {
+  width: 482px;
+  margin-top: 10px;
+  margin-bottom: 17px;
+}
+
+/*shared css*/
+.author-avatar {
+  height: 61px;
+}
+
+.author-avatar-container {
+  margin-right: 38px;
 }
 
 .question {
@@ -23,8 +42,4 @@ code {
 .question-info {
   display: flex;
   flex-direction: column;
-}
-
-.card-container {
-  width: 482px;
 }

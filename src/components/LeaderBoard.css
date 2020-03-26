@@ -1,0 +1,65 @@
+.user {
+  width: 100%;
+  max-width: 522px;
+  padding: 10px;
+  display: flex;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  margin-bottom: 27px;
+}
+.user-info {
+  margin: 10px;
+  width: 257px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hr-width {
+  width: 100%;
+}
+
+.vertical-line {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 31px;
+}
+
+.score {
+  border: 1px solid #dad7d7;
+  background-color: #f1f1f1;
+  width: 107px;
+  height: 42px;
+  text-align: center;
+  font-weight: bold;
+}
+.total-score {
+  border: 1px solid #dad7d7;
+  border-top: 0;
+  height: 90px;
+  text-align: center;
+}
+
+.total-score-value {
+  height: 50px;
+  width: 50px;
+  background-color: #28a745;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 24px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.score-value {
+  margin-left: 10px;
+}
+
+.author-avatar-container {
+  margin-right: 23px;
+  margin-top: 20px;
+}

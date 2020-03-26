@@ -28,7 +28,7 @@ export function addQuestion(question) {
   };
 }
 
-export function handleAddQuestion(optionOneText, optionTwoText) {
+export function handleAddQuestion(optionOneText, optionTwoText, callBack) {
   return (dispatch, getState) => {
     const { loggedInUser } = getState();
     const question = {
@@ -39,6 +39,7 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
     dispatch(showLoading());
     return saveQuestion(question)
       .then(questionWithId => dispatch(addQuestion(questionWithId)))
-      .then(() => dispatch(hideLoading()));
+      .then(() => dispatch(hideLoading()))
+      .then(() => callBack());
   };
 }

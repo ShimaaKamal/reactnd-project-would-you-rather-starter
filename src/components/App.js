@@ -7,6 +7,7 @@ import Home from "./Home";
 import Login from "./Login";
 import QuestionPoll from "./QuestionPoll";
 import NewQuestion from "./NewQuestion";
+import LeaderBoard from "./LeaderBoard";
 
 class App extends Component {
   componentDidMount() {
@@ -24,6 +25,7 @@ class App extends Component {
               <Route path="/" exact component={Home} />
               <Route path="/question/:id" component={QuestionPoll} />
               <Route path="/add" component={NewQuestion} />
+              <Route path="/leader" component={LeaderBoard} />
             </Fragment>
           )}
         </div>

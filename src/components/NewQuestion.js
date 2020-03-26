@@ -29,10 +29,16 @@ class NewQuestion extends Component {
     const { optionOne, optionTwo } = this.state;
     const { dispatch } = this.props;
 
-    dispatch(handleAddQuestion(optionOne, optionTwo));
+    dispatch(
+      handleAddQuestion(optionOne, optionTwo, this.handleRedirectToHome)
+    );
+    console.log(this.props.isLoading);
+  };
 
+  handleRedirectToHome = () => {
     this.props.history.push("/");
   };
+
   render() {
     return (
       <Fragment>
@@ -71,10 +77,5 @@ class NewQuestion extends Component {
     );
   }
 }
-function mapStateToProps({ loadingBar }) {
-  const isLoading = loadingBar;
-  return {
-    isLoading
-  };
-}
-export default withRouter(connect(mapStateToProps)(NewQuestion));
+
+export default withRouter(connect()(NewQuestion));

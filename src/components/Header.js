@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logo from "../logo.svg";
+import { connect } from "react-redux";
 
 class Header extends Component {
   render() {
+    const { authorName, authorAvatar } = this.props;
     return (
-      <div>
+      <div className="header">
         <Navbar bg="light" variant="light">
-          <Navbar.Brand href="#home">Would you rather?</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
+            Would you rather?
+          </Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">
               Home
@@ -16,13 +19,17 @@ class Header extends Component {
             <Nav.Link as={Link} to="/add">
               New Question
             </Nav.Link>
-            <Nav.Link as={Link} to="">
+            <Nav.Link as={Link} to="/leader">
               Leader Board
             </Nav.Link>
           </Nav>
           <div>
-            <img src={logo} className="user-logo" alt="logo" />
-            <span>Hello shimaa</span>
+            <img
+              src={authorAvatar}
+              className="user-logo"
+              alt={`Avatar of ${authorName}`}
+            />
+            <span>{authorName}</span>
             <a href="#logout" variant="outline-light">
               logout
             </a>
@@ -32,4 +39,10 @@ class Header extends Component {
     );
   }
 }
-export default Header;
+function mapStateToprops({ loggedInUser, users }) {
+  return {
+    authorName: users[loggedInUser].name,
+    authorAvatar: users[loggedInUser].avatarURL
+  };
+}
+export default connect(mapStateToprops)(Header);
