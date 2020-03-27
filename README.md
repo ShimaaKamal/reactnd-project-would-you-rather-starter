@@ -1,12 +1,32 @@
 # Would You Rather Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+This is the a complete project of would you rather
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+To get started testing the app:
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+* install all project dependencies with `yarn install`
+* start the development server with `yarn start`
 
-## Data
+##Front-end part
+├── README.md - This file.
+├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
+│   
+└── src/Components
+    ├── App.js # This is the root of the app. It is responsoible for init data and add routing mechanism 
+	├── Header.js #  Header of the application
+	├── Login.js #  Contains Login form
+	├── Homepage.js #  It renders tabs of answered and unanswered question
+    ├── LeaderBoard.js # It renders leaderBorad
+	├── NewQuestion.js # It renders new question form
+	├── QuestionPoll.js # It determins which page to render, either question poll form or question result
+    ├── App.test.js # Used for testing. Provided with Create React App.
+    ├── index.css # Global styles. You probably won't need to change anything here.
+    └── index.js # It is used for DOM rendering only.
+└── src/reducers
+└── src/actions
+└── src/middleware
+
+##Back-end part
 
 There are two types of objects stored in our database:
 
@@ -94,7 +114,3 @@ Your code will talk to the database via 4 methods:
 | authedUser | String | The id of the user who answered the question|
 | qid | String | The id of the question that was answered|
 | answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
-
-## Contributing
-
-This repository is the starter code for *all* Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
