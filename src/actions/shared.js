@@ -34,7 +34,7 @@ export function handleAddQuestion(optionOneText, optionTwoText, callBack) {
       optionOneText,
       optionTwoText
     };
-    var questionAfterSave = {};
+    let questionAfterSave = {};
     dispatch(showLoading());
     return saveQuestion(question)
       .then(questionWithId => {
