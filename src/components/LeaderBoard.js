@@ -5,7 +5,6 @@ import "./LeaderBoard.css";
 class LeaderBoard extends Component {
   render() {
     const { newUsers } = this.props;
-    console.log(newUsers);
     return newUsers.map(user => (
       <div key={user.authorName} className="user">
         <div className="author-avatar-container">
@@ -50,6 +49,15 @@ function mapStateToProps({ users }) {
     answeredQuestionsNumbers: Object.keys(users[key].answers).length,
     createdQuestionsNumbers: users[key].questions.length
   }));
+
+  newUsers.sort((u1, u2) => {
+    return (
+      u2.answeredQuestionsNumbers +
+      u2.createdQuestionsNumbers -
+      (u1.answeredQuestionsNumbers + u1.createdQuestionsNumbers)
+    );
+  });
+
   return { newUsers };
 }
 export default connect(mapStateToProps)(LeaderBoard);

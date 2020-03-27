@@ -32,7 +32,6 @@ class NewQuestion extends Component {
     dispatch(
       handleAddQuestion(optionOne, optionTwo, this.handleRedirectToHome)
     );
-    console.log(this.props.isLoading);
   };
 
   handleRedirectToHome = () => {

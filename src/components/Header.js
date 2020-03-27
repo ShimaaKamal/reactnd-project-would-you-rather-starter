@@ -1,9 +1,15 @@
 import React, { Component } from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { unSetLoggedInUser } from "../actions/loggedUser";
 
 class Header extends Component {
+  handleLogout = () => {
+    const { dispatch } = this.props;
+    dispatch(unSetLoggedInUser());
+  };
+
   render() {
     const { authorName, authorAvatar } = this.props;
     return (
@@ -30,9 +36,9 @@ class Header extends Component {
               alt={`Avatar of ${authorName}`}
             />
             <span>{authorName}</span>
-            <a href="#logout" variant="outline-light">
+            <Button onClick={this.handleLogout} variant="link">
               logout
-            </a>
+            </Button>
           </div>
         </Navbar>
       </div>

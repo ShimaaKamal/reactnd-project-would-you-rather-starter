@@ -6,6 +6,7 @@ import { handleSaveQuestionAnswer } from "../actions/shared";
 import QuestionPollForm from "./QuestionPollForm";
 import QuestionResult from "./QuestionResult";
 import LoadingBar from "react-redux-loading-bar";
+import Error from "./Error";
 
 class QuestionPoll extends Component {
   handleSubmit = optionSelected => {
@@ -22,6 +23,9 @@ class QuestionPoll extends Component {
 
   render() {
     const { question, isVoted } = this.props;
+    if (!question) {
+      return <Error></Error>;
+    }
     const { authorName, authorAvatar } = this.props.question;
 
     return (
@@ -63,9 +67,10 @@ function mapStateToProps({ questions, users, loggedInUser }, props) {
       : null,
     loggedInUser: loggedInUser,
     qid: id,
-    isVoted:
-      questions[id].optionOne.votes.includes(loggedInUser) ||
-      questions[id].optionTwo.votes.includes(loggedInUser)
+    isVoted: question
+      ? questions[id].optionOne.votes.includes(loggedInUser) ||
+        questions[id].optionTwo.votes.includes(loggedInUser)
+      : null
   };
 }
 export default connect(mapStateToProps)(QuestionPoll);

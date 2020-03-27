@@ -40,10 +40,8 @@ export function handleAddQuestion(optionOneText, optionTwoText, callBack) {
       .then(questionWithId => {
         questionAfterSave = questionWithId;
         dispatch(addQuestion(questionWithId));
-        console.log(questionWithId);
       })
       .then(() => {
-        console.log("questionWithId", questionAfterSave);
         dispatch(addQuestionToUser(questionAfterSave));
       })
       .then(() => dispatch(hideLoading()))

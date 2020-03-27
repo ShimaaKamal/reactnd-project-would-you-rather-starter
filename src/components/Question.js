@@ -5,7 +5,7 @@ import { formatQuestion } from "../utils/helper";
 import { withRouter } from "react-router-dom";
 
 class Question extends Component {
-  handlePollQuestion = (e, id) => {
+  handlePollQuestion = id => {
     this.props.history.push(`/question/${id}`);
   };
 
@@ -38,7 +38,7 @@ class Question extends Component {
                 <h3>Would you Rather?</h3>
                 <span>...{questionOptionOneText}...</span>
                 <Button
-                  onClick={e => this.handlePollQuestion(e, id)}
+                  onClick={() => this.handlePollQuestion(id)}
                   variant="success"
                 >
                   View Poll

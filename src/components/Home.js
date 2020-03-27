@@ -6,7 +6,6 @@ import "./Home.css";
 
 class Home extends Component {
   render() {
-    console.log("Inside home render");
     const { answeredQuestionsIds, unansweredQuestionsIds } = this.props;
     return (
       <div className="home-container align-self-center">
@@ -31,7 +30,6 @@ class Home extends Component {
   }
 }
 function mapStateToProps({ questions, loggedInUser }) {
-  console.log("questions", questions);
   return {
     answeredQuestionsIds: Object.keys(questions)
       .filter(questionId => {
