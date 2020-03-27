@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Card, Form, Button } from "react-bootstrap";
-import { handleAddQuestion } from "../actions/questions";
+import { handleAddQuestion } from "../actions/shared";
 import LoadingBar from "react-redux-loading-bar";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
