@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 
 class Question extends Component {
   handlePollQuestion = id => {
-    this.props.history.push(`/question/${id}`);
+    this.props.history.push(`/questions/${id}`);
   };
 
   render() {
