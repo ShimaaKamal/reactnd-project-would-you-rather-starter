@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import { setLoggedINUser } from "../actions/loggedUser";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 class Login extends Component {
@@ -20,6 +21,8 @@ class Login extends Component {
 
     const { id } = this.state;
     this.props.dispatch(setLoggedINUser(id));
+
+    this.props.history.push("/");
   };
   render() {
     return (
@@ -64,4 +67,4 @@ function mapStateToProps({ users }) {
     })
   };
 }
-export default connect(mapStateToProps)(Login);
+export default withRouter(connect(mapStateToProps)(Login));
